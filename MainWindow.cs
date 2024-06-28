@@ -112,9 +112,30 @@ namespace Practice
                     y = -(j - 200) / 80 * (width / 10);
                     g.DrawString(Math.Round(y, 2).ToString(), font, brush, 805, (float)j - 10);
                 }
+
+                StreamWriter writer = new StreamWriter("history.txt", append:true);
+                string funcName;
+                DateTime time = new DateTime();
+                time = DateTime.Now;
+                switch (functionId)
+                {
+                    case 0: funcName = "синуса"; break;
+                    case 1: funcName = "косинуса"; break;
+                    case 2: funcName = "тангенса"; break;
+                    case 3: funcName = "котангенса"; break;
+                    default: funcName = ""; break;
+                }
+                if (!itemIsRadian)
+                {
+                    start = start * 180 / Math.PI;
+                    end = end * 180 / Math.PI;
+                }
+                writer.WriteLine("Пользователь построил график {0} на интервале [{1};{2}] ({3}) в {4}", funcName, start, end, itemIsRadian ? "рад." : "град.", time);
+                writer.Close();
             }
             else
                 MessageBox.Show("Неверно задан интервал!");
+            
             GraphBox.Invalidate();
         }
 
@@ -164,6 +185,20 @@ namespace Practice
         }
         private void InfoButton_Click(object sender, EventArgs e)
         {
+            string funcName;
+            switch (FuncSelectBox.SelectedIndex)
+            {
+                case 0: funcName = "синус"; break;
+                case 1: funcName = "косинус"; break;
+                case 2: funcName = "тангенс"; break;
+                case 3: funcName = "котангенс"; break;
+                default: funcName = ""; break;
+            }
+            DateTime time = new DateTime();
+            time = DateTime.Now;
+            StreamWriter writer = new StreamWriter("history.txt", append: true);
+            writer.WriteLine("Пользователь открыл справочную информацию о функции {0} в {1}", funcName, time);
+            writer.Close();
             Info info = new Info(FuncSelectBox.SelectedIndex);
             info.Show();
         }
