@@ -28,18 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Info));
+            TextLabel = new Label();
             SuspendLayout();
+            // 
+            // TextLabel
+            // 
+            TextLabel.AutoSize = true;
+            TextLabel.Location = new Point(12, 9);
+            TextLabel.Name = "TextLabel";
+            TextLabel.Size = new Size(13, 20);
+            TextLabel.TabIndex = 0;
+            TextLabel.Text = " ";
             // 
             // Info
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(782, 453);
+            Controls.Add(TextLabel);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Info";
             Text = "Информация";
+            Load += Info_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label TextLabel;
     }
 }

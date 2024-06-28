@@ -14,10 +14,10 @@ namespace Practice
         public string CotangentText;
         public RefInfo()
         {
-            SineText = "";
-            CosineText = "";
-            TangentText = "";
-            CotangentText = "";
+            SineText = "Sinus";
+            CosineText = "Cosinus";
+            TangentText = "Tangens";
+            CotangentText = "Cotangens";
         }
     }
 }

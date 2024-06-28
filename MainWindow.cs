@@ -33,7 +33,7 @@ namespace Practice
                 start = (double)startRange.Value * Math.PI / 180;
                 end = (double)endRange.Value * Math.PI / 180;
             }
-            
+
             functionId = FuncSelectBox.SelectedIndex;
 
             if (RadianItem.Checked)
@@ -161,6 +161,11 @@ namespace Practice
                 endRange.Maximum = 100;
                 endRange.Minimum = -100;
             }
+        }
+        private void InfoButton_Click(object sender, EventArgs e)
+        {
+            Info info = new Info(FuncSelectBox.SelectedIndex);
+            info.Show();
         }
     }
 }

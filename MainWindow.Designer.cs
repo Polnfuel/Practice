@@ -158,6 +158,7 @@
             InfoButton.TabIndex = 11;
             InfoButton.Text = "О функции...";
             InfoButton.UseVisualStyleBackColor = true;
+            InfoButton.Click += InfoButton_Click;
             // 
             // MainWindow
             // 
