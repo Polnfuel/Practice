@@ -1,3 +1,13 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
 namespace Practice
 {
     public partial class MainWindow : Form
@@ -8,7 +18,6 @@ namespace Practice
         public static double start;
         public static double end;
         public static bool itemIsRadian;
-
         public MainWindow()
         {
             InitializeComponent();
@@ -33,14 +42,11 @@ namespace Practice
                 start = (double)startRange.Value * Math.PI / 180;
                 end = (double)endRange.Value * Math.PI / 180;
             }
-
             functionId = FuncSelectBox.SelectedIndex;
-
             if (RadianItem.Checked)
                 itemIsRadian = true;
             else
                 itemIsRadian = false;
-
             if (start < end)
             {
                 double width = end - start;
@@ -51,7 +57,6 @@ namespace Practice
                 g.Clear(Color.White);
                 Font font = new Font("Arial", 10);
                 g.FillRectangle(new SolidBrush(Color.Red), 0, 200, 804, 2);
-
                 bool xaxis = true;
                 for (double i = 0; i <= 800; i++)
                 {
@@ -71,7 +76,6 @@ namespace Practice
                     ypix = y / onePixel + 199;
                     if (ypix <= 400 && ypix >= 0)
                         g.FillRectangle(brush, (float)i, (float)ypix, 2, 2);
-
                     if (Math.Abs(x - (int)x) < onePixel && (int)x == 0)
                     {
                         if (xaxis)
@@ -103,16 +107,13 @@ namespace Practice
                         xaxis = false;
                     }
                     if (i % 80 == 40 && i != 200)
-                    {
                         g.FillRectangle(gridbrush, 0, (float)i, 804, 1);
-                    }
                 }
                 for (int j = 360; j >= 0; j -= 80)
                 {
                     y = -(j - 200) / 80 * (width / 10);
                     g.DrawString(Math.Round(y, 2).ToString(), font, brush, 805, (float)j - 10);
                 }
-
                 StreamWriter writer = new StreamWriter("history.txt", append:true);
                 string funcName;
                 DateTime time = new DateTime();
@@ -135,10 +136,8 @@ namespace Practice
             }
             else
                 MessageBox.Show("Неверно задан интервал!");
-            
             GraphBox.Invalidate();
         }
-
         private void SaveButton_Click(object sender, EventArgs e)
         {
             SaveFileDialog savedialog = new SaveFileDialog();

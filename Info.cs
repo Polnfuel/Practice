@@ -31,21 +31,13 @@ namespace Practice
         private void Info_Load(object sender, EventArgs e)
         {
             if (funcId == 0)
-            {
                 Text = "Синус";
-            }
             else if (funcId == 1)
-            {
                 Text = "Косинус";
-            }
             else if (funcId == 2)
-            {
                 Text = "Тангенс";
-            }
             else if (funcId == 3)
-            {
                 Text = "Котангенс";
-            }
             TextLabel.Text = text;
         }
     }
